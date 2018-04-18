@@ -33,10 +33,12 @@ public class IOSSDK {
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		// TODO Auto-generated method stub
 		
+		String appdir = System.getProperty("user.dir");
+		
 		
 		DesiredCapabilities caps = new DesiredCapabilities();
 		
-	    caps.setCapability("app", "/Users/apple/Documents/ioscsdk/Example18-4.ipa");
+	    caps.setCapability("app", appdir + "/AppFile/Example18-4.ipa");
         caps.setCapability("automationName", "XCUITest");
         caps.setCapability( "udid", "d9281185fb7cdff99e8799a22f0d3028ba216de9");
         caps.setCapability("platformName", "IOS");
@@ -44,7 +46,7 @@ public class IOSSDK {
         caps.setCapability("xcodeOrgID", "KLLYGU7M7Q");
         caps.setCapability("xcodeSigningId", "iPhone Developer");
         
-        caps.setCapability("xcodeConfigFile", "/Users/apple/Documents/csdk.xcconfig");
+        caps.setCapability("xcodeConfigFile", appdir + "/AppFile/csdk.xcconfig");
         caps.setCapability("deviceName", "Vijay");
         caps.setCapability("autoAcceptAlerts", true);
         caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 100);
