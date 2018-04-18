@@ -5,8 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.Dimension;
-
+//import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -37,7 +36,7 @@ public class IOSSDK {
 		
 		DesiredCapabilities caps = new DesiredCapabilities();
 		
-	    caps.setCapability("app", "/Users/apple/Documents/ioscsdk/Example.ipa");
+	    caps.setCapability("app", "/Users/apple/Documents/ioscsdk/Example18-4.ipa");
         caps.setCapability("automationName", "XCUITest");
         caps.setCapability( "udid", "d9281185fb7cdff99e8799a22f0d3028ba216de9");
         caps.setCapability("platformName", "IOS");
@@ -62,30 +61,36 @@ public class IOSSDK {
 		
 		
 		d.fromDropboxtranscode(score);
+		
 
 	
 	}
-	 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void fromDropboxtranscode(String score) throws InterruptedException {
+	
+	public void Wanpmode() {
 		
-		
-		
-
-		
-		
-		//String score = System.getenv("SSIM");
-		//System.out.println(score);
-		//float iscore = Integer.parseInt(score);
 		
 		driver.findElementByName("Transcode").click();
-		/*driver.findElementByAccessibilityId("Camera").click();
-		driver.findElementByAccessibilityId("OK").click();
-		driver.findElementByAccessibilityId("Camera Roll").click();
-		@SuppressWarnings("unchecked")
-		List<WebElement> img = (List<WebElement>) driver.findElementsByClassName("XCUIElementTypeImage");
-		for (int x=0; x<img.size();x++) {*/
+		driver.findElementByXPath("//XCUIElementTypeNavigationBar[@name=\"CRTranscoderTestView\"]/XCUIElementTypeButton[2]").click();
+		driver.findElementByAccessibilityId("WA(NP)").click();
+		WebElement cs = (WebElement) driver.findElementsByClassName("XCUIElementTypeSwitch").get(2);
+		if(cs.getAttribute("value").equals("0")) {
 			
+			
+			cs.click();
+		}
+			
+			
+			
+		
+	}
+	
+	public void transcodesettings(String score) {
+		
+		
+			
+		
+		
+		driver.findElementByName("Transcode").click();
 		driver.findElementByXPath("//XCUIElementTypeNavigationBar[@name=\"CRTranscoderTestView\"]/XCUIElementTypeButton[2]").click();
 		driver.findElementByAccessibilityId("SSIM").click();
 		WebElement cs = (WebElement) driver.findElementsByClassName("XCUIElementTypeSwitch").get(2);
@@ -98,17 +103,64 @@ public class IOSSDK {
 		WebElement st = (WebElement) driver.findElementsByClassName("XCUIElementTypeTextField").get(1);
 		st.clear();
 		st.sendKeys(score);
+		
+		
+		
+	}
+	 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void fromDropboxtranscode(String score) throws InterruptedException {
+		
+	
+	
+	int s = 1;
+	
+	if(score==null) {
+		
+		
+		Wanpmode();
+	}
+	else {
+	
+	while (s<=2) {
+		
+		if(s==1) {
+			
+		transcodesettings(score);
+			
+		}else if(s==2) {
+			
+			
+			driver.findElementByXPath("//XCUIElementTypeNavigationBar[@name=\"CRTranscoderTestView\"]/XCUIElementTypeButton[2]").click();
+
+			driver.findElementByAccessibilityId("NN_SSIM").click();;
+			
+			
+		}else if(s==3) {
+			
+			driver.findElementByXPath("//XCUIElementTypeNavigationBar[@name=\"CRTranscoderTestView\"]/XCUIElementTypeButton[2]").click();
+
+			
+		   driver.findElementByAccessibilityId("WA").click();;
+			
+		}else if(s==4) {
+			
+			driver.findElementByXPath("//XCUIElementTypeNavigationBar[@name=\"CRTranscoderTestView\"]/XCUIElementTypeButton[2]").click();
+
+			driver.findElementByAccessibilityId("WA(NP)").click();
+			
+			
+		}
+		
 		driver.findElementByAccessibilityId("Back").click();
 		driver.findElementByAccessibilityId("Organize").click();
-		//WebElement el = driver.findElementByXPath("//XCUIElementTypeApplication[@name=\"CrunchSDK\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]");
-	    //WebElement el = (WebElement) driver.findElementByXPath("//XCUIElementTypeApplication[@name=\"CrunchSDK\"]/XCUIElementTypeWindow[2]/XCUIElementTypeOther");
-	    //el.click();
 		
-		  Dimension dimensions = driver.manage().window().getSize();
+		
+		  /*Dimension dimensions = driver.manage().window().getSize();
 		  int screenWidth = dimensions.getWidth();
 		  int screenHeight = dimensions.getHeight();
 		  System.out.println(screenWidth);
-		  System.out.println(screenHeight);
+		  System.out.println(screenHeight);*/
 		  
 		  
         
@@ -116,37 +168,29 @@ public class IOSSDK {
 		
 	    new TouchAction(driver).tap(PointOption.point(40, 40)).perform();
 	    
-	       Thread.sleep(1000);
+	       Thread.sleep(2000);
 	    
 	    new TouchAction(driver).tap(PointOption.point(45, 180)).perform();
 	    
-	    Thread.sleep(1000);
+	    Thread.sleep(2000);
 
 		new TouchAction(driver).tap(PointOption.point(50, 200)).perform();
 		
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		
 		new TouchAction(driver).tap(PointOption.point(55, 200)).perform();
 		
 		driver.findElementByAccessibilityId("480p").click();
-		//new TouchAction(driver).press(new PointOption().withCoordinates(181,130)).perform();
 		
-				
-		//WebElement vid = (WebElement) driver.findElementsByClassName("XCUIElementTypeImage").get(1);
-		//vid.click();
-		//driver.findElementByAccessibilityId("Done").click();
-		//driver.findElementByAccessibilityId("480p").click();
-		//WebDriverWait wait = new WebDriverWait(driver,100);
-		//wait.until(ExpectedConditions.inv 
 		Thread.sleep(3000);
 		
 		
 		List<WebElement> tid = (List<WebElement>) driver.findElementsByAccessibilityId("Task ID:");
-		int s = tid.size();
+		int siz = tid.size();
 		
-		System.out.println("Size is "+s);
+		System.out.println("Size is "+siz);
 		
-		if(s==1) {
+		if(siz==1) {
 			
 			
 			
@@ -173,27 +217,7 @@ public class IOSSDK {
 				
 		}
 				
-
-			
-			
-		
-		
-		/*try {
-		
-		  driver.findElementByXPath("//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[@name=\"Transcoding\"]");	
-		  WebElement exp = driver.findElementByXPath("//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeButton[@name=\"Export\"]");
-		  exp.click();
-
-		}
-		catch(Exception e) {
-			
-			System.out.println("Transcoding text is not found");
-		}*/
-			//driver.findElementByXPath("//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeButton[@name=\"Export\"]");
-		//WebElement exp = (WebElement) driver.findElementByXPath("//XCUIElementTypeApplication[@name=\"CrunchSDK\"]/XCUIElementTypeWindow[1]//XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeButton[@name=\"Export\"])");
-		
-		//exp.click();
-		driver.findElementByAccessibilityId("Export transcoded").click();
+        driver.findElementByAccessibilityId("Export transcoded").click();
 		WebElement dp = driver.findElementByXPath("//XCUIElementTypeOther[@name=\"ActivityListView\"]/XCUIElementTypeOther");
 		dp.click();
 		
@@ -202,8 +226,7 @@ public class IOSSDK {
 			   driver.findElementByAccessibilityId("TRANS1");
 			  driver.findElementByAccessibilityId("Save").click();
 	            
-	            //WebElement cf = driver.findElementByAccessibilityId("Choose a Folder…");
-	            //cf.click();
+	           
 	            
 	           
 	        }
@@ -223,11 +246,12 @@ public class IOSSDK {
 		   
 			   
 		driver.findElementByAccessibilityId("Return to CrunchSDK").click();
-		driver.findElementByAccessibilityId("Select task").click();
 		
+		s++;
 		
-		
-		
+	}
+	}
+	driver.findElementByAccessibilityId("Select task").click();
 		
 	}
 	
