@@ -54,7 +54,7 @@ public class IOSSDK {
         driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
         
-        String score = args[0];
+        //String score = args[0];
       
 		
 		IOSSDK d = new IOSSDK();
@@ -62,7 +62,7 @@ public class IOSSDK {
 		//d.fromGallerytranscode();
 		
 		
-		d.fromDropboxtranscode(score);
+		d.fromDropboxtranscode();
 		
 
 	
@@ -86,13 +86,13 @@ public class IOSSDK {
 		
 	}
 	
-	public void transcodesettings(String score) {
+	public void transcodesettings() {
 		
 		
 			
 		
 		
-		driver.findElementByName("Transcode").click();
+		//driver.findElementByName("Transcode").click();
 		driver.findElementByXPath("//XCUIElementTypeNavigationBar[@name=\"CRTranscoderTestView\"]/XCUIElementTypeButton[2]").click();
 		driver.findElementByAccessibilityId("SSIM").click();
 		WebElement cs = (WebElement) driver.findElementsByClassName("XCUIElementTypeSwitch").get(2);
@@ -104,33 +104,31 @@ public class IOSSDK {
 		
 		WebElement st = (WebElement) driver.findElementsByClassName("XCUIElementTypeTextField").get(1);
 		st.clear();
-		st.sendKeys(score);
+		st.sendKeys("0.90");
 		
 		
 		
 	}
 	 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public void fromDropboxtranscode(String score) throws InterruptedException {
+	public void fromDropboxtranscode() throws InterruptedException {
 		
 	
 	
 	int s = 1;
 	
-	if(score==null) {
+	while(s<=3) {
+	
+	if(s==1) {
 		
 		
 		Wanpmode();
 	}
-	else {
+	else if(s==2){
 	
-	while (s<=2) {
-		
-		if(s==1) {
+	   transcodesettings();
 			
-		transcodesettings(score);
-			
-		}else if(s==2) {
+		}else {
 			
 			
 			driver.findElementByXPath("//XCUIElementTypeNavigationBar[@name=\"CRTranscoderTestView\"]/XCUIElementTypeButton[2]").click();
@@ -138,7 +136,9 @@ public class IOSSDK {
 			driver.findElementByAccessibilityId("NN_SSIM").click();;
 			
 			
-		}else if(s==3) {
+		}
+	
+	     /*else if(s==3) {
 			
 			driver.findElementByXPath("//XCUIElementTypeNavigationBar[@name=\"CRTranscoderTestView\"]/XCUIElementTypeButton[2]").click();
 
@@ -152,7 +152,7 @@ public class IOSSDK {
 			driver.findElementByAccessibilityId("WA(NP)").click();
 			
 			
-		}
+		}*/
 		
 		driver.findElementByAccessibilityId("Back").click();
 		driver.findElementByAccessibilityId("Organize").click();
@@ -252,7 +252,7 @@ public class IOSSDK {
 		s++;
 		
 	}
-	}
+	
 	driver.findElementByAccessibilityId("Select task").click();
 		
 	}
